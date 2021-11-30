@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+{{ title }}
+{% endblock title %}
+
+{% block content %}
+
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Название товара</th>
+        <th scope="col">Дата поступления</th>
+        <th scope="col">Цена</th>
+        <th scope="col">Единица измерения</th>
+        <th scope="col">Имя поставщика</th>
+        <th scope="col">Категории</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for good in goods_list %}
+    <tr>
+        <th scope="row">{{ good.pk }}</th>
+        <td>{{ good.name }}</td>
+        <td>{{ good.receipt_date }}</td>
+        <td>{{ good.price }} руб.</td>
+        <td>{{ good.unit }}</td>
+        <td>{{ good.provider_name }}</td>
+        <td>{% for category in good.category.all %}{{category}} {% endfor %}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+<div class="d-flex justify-content-center">
+    <a class="btn btn-primary" href="{% url 'goodsapp:good_add' %}" role="button">Добавить товар</a>
+</div>
+
+{% endblock content %}
