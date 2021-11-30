@@ -6,7 +6,7 @@ from goodsapp.models import Good
 class GoodCreateForm(forms.ModelForm):
     class Meta:
         model = Good
-        fields = ('name', 'price', 'unit', 'provider_name')
+        fields = ('category', 'name', 'price', 'unit', 'provider_name')
 
     def __init__(self, *args, **kwargs):
         super(GoodCreateForm, self).__init__(*args, **kwargs)
